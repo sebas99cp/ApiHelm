@@ -51,8 +51,9 @@ jobs:
         cd ApiHelm-chart
         git config --global user.email "sebas99cp@gmail.com.com"
         git config --global user.name "Sebastian Cardozo Padilla"
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/sebas99cp/ApiHelm-chart.git
         git add Chart.yaml values.yaml
         git commit -m "Update chart version to $NEW_VERSION and Docker image tag to latest"
-        git push
+        git push origin HEAD:master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
