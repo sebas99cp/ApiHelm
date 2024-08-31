@@ -11,7 +11,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
@@ -32,11 +32,11 @@ jobs:
         tags: ${{ secrets.DOCKER_USERNAME }}/dockerapihelm:latest
 
     - name: Checkout Helm Chart Repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: sebas99cp/ApiHelm-chart
-        token: ${{ secrets.GITHUB_TOKEN }}
         path: ApiHelm-chart
+        token: ${{ secrets.PAT_TOKEN }}
 
     - name: Update Helm chart version
       run: |
@@ -51,9 +51,8 @@ jobs:
         cd ApiHelm-chart
         git config --global user.email "sebas99cp@gmail.com.com"
         git config --global user.name "Sebastian Cardozo Padilla"
-        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/sebas99cp/ApiHelm-chart.git
         git add Chart.yaml values.yaml
         git commit -m "Update chart version to $NEW_VERSION and Docker image tag to latest"
-        git push origin HEAD:master
+        git push
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
