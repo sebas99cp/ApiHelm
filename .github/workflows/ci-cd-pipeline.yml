@@ -40,14 +40,14 @@ jobs:
     - name: Update Helm chart version
       run: |
         # Incrementa la versión del chart en Chart.yaml
-        VERSION=$(grep '^version:' Chart.yaml | awk '{print $2}')
+        VERSION=$(grep '^version:' ApiHelm-chart/Chart.yaml | awk '{print $2}')
         NEW_VERSION=$(echo $VERSION | awk -F. -v OFS=. '{$NF += 1 ; print}')
-        sed -i "s/^version:.*/version: $NEW_VERSION/" Chart.yaml
+        sed -i "s/^version:.*/version: $NEW_VERSION/" ApiHelm-chart/Chart.yaml
         
         # Actualiza el tag en values.yaml
-        sed -i "s/tag: .*/tag: latest/" values.yaml
+        sed -i "s/tag: .*/tag: latest/" ApiHelm-chart/values.yaml
         
-        cd helm-chart
+        cd ApiHelm-chart
         git config --global user.email "sebas99cp@gmail.com.com"
         git config --global user.name "Sebastian Cardozo Padilla"
         git add Chart.yaml values.yaml
