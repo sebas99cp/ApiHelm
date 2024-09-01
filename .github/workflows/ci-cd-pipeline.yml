@@ -29,6 +29,7 @@ jobs:
         context: .
         file: ApiHelm/Dockerfile
         push: true
+        no-cache: true
         tags: ${{ secrets.DOCKER_USERNAME }}/dockerapihelm:latest
 
     - name: Checkout Helm Chart Repo
