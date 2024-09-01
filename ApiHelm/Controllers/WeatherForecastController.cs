@@ -8,7 +8,7 @@ namespace ApiHelm.Controllers
     {
         private static readonly string[] Summaries = new[]
         {
-            "Congelante", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+            "Congelante", "Vigorizante", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
@@ -18,7 +18,7 @@ namespace ApiHelm.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetWeatherForecast2")]
+        [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
