@@ -8,7 +8,7 @@ namespace ApiHelm.Controllers
     {
         private static readonly string[] Summaries = new[]
         {
-            "Congelante", "Vigorizante", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+            "Congelante", "Vigorizante", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Caliente", "Sweltering", "Scorching"
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
